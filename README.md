@@ -18,6 +18,23 @@ Basically, our target is to generate lyrics which require a relatively long inpu
 
 ## Model
 
+## Data
+
+The data for this model is acquired from the following Kaggle link. This dataset has
+an Open Database License, which means we are free to use its content for educational
+purposes.
+To view a complete break-down of the dataset, including data acquisition,
+visualization, and modification, please see the following notebook. To summarize, when we
+extract only English songs from the dataset, we get a total of 191,814 songs, with a mean
+word count of approximately 250, and a standard deviation of 159. If we exclude outliers in
+the dataset, namely songs with extremely low word counts (like less than 10) and songs with
+extremely high word counts (like over 800), we don’t actually lose that many songs, with a
+new total of 189,413 songs, but a lower standard deviation of 139, and now the distribution
+looks more normal. This means that the model should have enough variance in the data to
+train from, so that it hopefully generalizes well, and it will train from songs with word counts
+that you would typically expect.
+
+Data splitting
 
 ## Training
 
