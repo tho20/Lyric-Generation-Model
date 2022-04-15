@@ -13,24 +13,11 @@ character serving as the new seed text for the next inference. This will generat
 more characters sequentially until we have created a wholly new string. We can continue this
 process arbitrarily and stop after a desired length is reached.
 
+Basically, our target is to generate lyrics which require a relatively long input sequence in the character level. To prevent the gradient vanishing in simple RNN, we decided to use unidirectional LSTM to selectively choose the information we would like to keep in the long short-term memory. Lyrics generation is a subset of text generation. In the data preprocessing stage, we have assigned each unique character in the dataset a unique integer. The input of our model is a matrix, which length is the batch size and height is the number of input characters. Our model begins with a stacked LSTM. In the training phase, we use teaching force as well in order to speed up the convergence. The output of previous LSTM is fed into the next LSTM layer. After the stacked LSTM layer, we flatten out the output and then use a few fully connected layers to compress the output size. After the fully connected layers, we use softmax as our activation function for the output, then use cross entropy loss function with adam optimizer to calculate the loss.
+
 
 ## Model
 
-Our target is to generate lyrics which require a relatively long input sequence in the
-character level. To prevent the gradient vanishing in simple RNN, we decide to use
-unidirectional LSTM to selectively choose the information we would like to keep in the long
-short-term memory.
-Lyrics generation is a subset of text generation.
-In the data preprocessing stage, we plan to assign each unique character in the
-dataset a unique integer. The input of our model will be a matrix, which length is the batch
-size and height is the number of input characters.
-Our model begins with a stacked LSTM. In the training phase, we will use the
-teaching force on the first LSTM layer to speed up the convergence. The output of previous
-LSTM will be fed into the next LSTM layer.
-After the stacked LSTM layer, we will flatten out the output and then use a few fully
-connected layers to compress the output size. After the fully connected layers, we will use
-softmax as our activation function for the output, then use cross entropy loss function with
-adam optimizer to calculate the loss.
 
 ## Training
 
