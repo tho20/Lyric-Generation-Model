@@ -2,11 +2,35 @@
 Final project CSC413: Neural networks and Deep Learning
 
 ## Introduction
-
+The network we designed writes song lyrics. In essence, this means the
+model performs text generation. From a given seed text (the first line of lyrics for
+example) the model predicts the next character based on the conditional probabilities of
+all characters in its learned vocabulary.
+So if we feed it “Everybody put your hands u”, we hope it will return “p” so that we get
+“Everybody put your hands up”.
+This process is applied repeatedly, where we concatenate the seed and predicted
+character serving as the new seed text for the next inference. This will generate more and
+more characters sequentially until we have created a wholly new string. We can continue this
+process arbitrarily and stop after a desired length is reached.
 
 
 ## Model
 
+Our target is to generate lyrics which require a relatively long input sequence in the
+character level. To prevent the gradient vanishing in simple RNN, we decide to use
+unidirectional LSTM to selectively choose the information we would like to keep in the long
+short-term memory.
+Lyrics generation is a subset of text generation.
+In the data preprocessing stage, we plan to assign each unique character in the
+dataset a unique integer. The input of our model will be a matrix, which length is the batch
+size and height is the number of input characters.
+Our model begins with a stacked LSTM. In the training phase, we will use the
+teaching force on the first LSTM layer to speed up the convergence. The output of previous
+LSTM will be fed into the next LSTM layer.
+After the stacked LSTM layer, we will flatten out the output and then use a few fully
+connected layers to compress the output size. After the fully connected layers, we will use
+softmax as our activation function for the output, then use cross entropy loss function with
+adam optimizer to calculate the loss.
 
 ## Training
 
