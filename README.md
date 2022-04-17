@@ -38,10 +38,10 @@ The final loss is 1.284720 with training and validation accuracies 0.584776 and 
 
 Here's a quote of generated lyrics:
 
-map reactions, i don't warning stand
-every child and rain
-they say i can get down the dark
-don't tell me come in time you
+map reactions, i don't warning stand\n
+every child and rain\n
+they say i can get down the dark\n
+don't tell me come in time you\n
 
 In this example lyrics we can identify a few notable features:
 - Real words with few spelling mistakes
