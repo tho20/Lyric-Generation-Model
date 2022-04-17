@@ -32,6 +32,7 @@ Basically, our target is to generate lyrics which require a relatively long inpu
 
 ## Results
 
+![image](https://user-images.githubusercontent.com/68927580/163728451-40702e80-8ecb-4c42-8809-e3a9ae7c7acf.png)
 
 
 ## Ethical Considerations
