@@ -34,7 +34,18 @@ Basically, our target is to generate lyrics which require a relatively long inpu
 We tested a range of learning rates and different values for the embedding size and model size. We opted to stick with these parameters as the results we deemed were of sufficient quality.
 
 ## Results
+Quote of generated lyrics:
 
+map reactions, i don't warning stand
+every child and rain
+they say i can get down the dark
+don't tell me come in time you
+
+Things to notice:
+- Real words with few spelling mistakes
+- Coherent grammar
+- Line breaks that make sense
+- Does not often make actual sense
 
 ## Ethical Considerations
 
