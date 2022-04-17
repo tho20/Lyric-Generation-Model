@@ -34,18 +34,23 @@ Basically, our target is to generate lyrics which require a relatively long inpu
 We tested a range of learning rates and different values for the embedding size and model size. We opted to stick with these parameters as the results we deemed were of sufficient quality.
 
 ## Results
-Quote of generated lyrics:
+The final loss is 1.284720 with training and validation accuracies 0.584776 and 0.584184 respectively.
+
+Here's a quote of generated lyrics:
 
 map reactions, i don't warning stand
 every child and rain
 they say i can get down the dark
 don't tell me come in time you
 
-Things to notice:
+In this example lyrics we can identify a few notable features:
 - Real words with few spelling mistakes
-- Coherent grammar
+- Somewhat coherent grammar
 - Line breaks that make sense
 - Does not often make actual sense
+
+For our final model we will often see generated text that exhibit these features. These features are not present in an untrained model (that generates random strings). We can reasonably assume our model learned a large number of words and has some intuition of how to structure some lyrics. But it is unable to create lyrics that have substantial meaning.
+We think that using a bigger model with more training time would allow us to generate lyrics that make more sense as opposed to just grammatically correct strings of words. We're confident our dataset was large enough, so we think the main bottleneck was the size of our model and the computing resources at our disposal.
 
 ## Ethical Considerations
 
