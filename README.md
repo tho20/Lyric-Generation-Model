@@ -31,7 +31,7 @@ Basically, our target is to generate lyrics which require a relatively long inpu
 
 ![image](https://user-images.githubusercontent.com/68927580/163728451-40702e80-8ecb-4c42-8809-e3a9ae7c7acf.png)
 
-We tried a couple of different embedding size and hidden size before choosing 128 and 256 respectively.  Moreover, we tried a variety of different learning rates and adjusted whenever we deemed necessary (i.e. if the model was converging slowly we would increase the learning rate and if we were getting too much instability we would decrease it). We ended up by settling on a learning rate of 0.003 for the main model. . We also kept a log of hyperparameters tested so that we don’t repeat ourselves and waste time since the models took a  while to train.
+We tried a couple of different embedding size and hidden size before choosing 128 and 256 respectively.  Moreover, we tried a variety of different learning rates and adjusted whenever we deemed necessary (i.e. if the model was converging slowly we would increase the learning rate and if we were getting too much instability we would decrease it). We ended up by settling on a learning rate of 0.003 for the main model. We also kept a log of hyperparameters tested so that we don’t repeat ourselves and waste time since the models took a  while to train.
 
 ## Results
 The final loss is 1.284720 with training and validation accuracies 0.584776 and 0.584184 respectively.
