@@ -20,21 +20,12 @@ Basically, our target is to generate lyrics which require a relatively long inpu
 
 ## Data
 
-The data for this model is acquired from the following Kaggle link. This dataset has
-an Open Database License, which means we are free to use its content for educational
-purposes.
-To view a complete break-down of the dataset, including data acquisition,
-visualization, and modification, please see the following notebook. To summarize, when we
-extract only English songs from the dataset, we get a total of 191,814 songs, with a mean
-word count of approximately 250, and a standard deviation of 159. If we exclude outliers in
-the dataset, namely songs with extremely low word counts (like less than 10) and songs with
-extremely high word counts (like over 800), we don’t actually lose that many songs, with a
-new total of 189,413 songs, but a lower standard deviation of 139, and now the distribution
-looks more normal. This means that the model should have enough variance in the data to
-train from, so that it hopefully generalizes well, and it will train from songs with word counts
-that you would typically expect.
+&nbsp;&nbsp;&nbsp;&nbsp;The data for this model is acquired from the following Kaggle [link](https://www.kaggle.com/neisse/scrapped-lyrics-from-6-genres?select=lyrics-data.csv). This dataset has an [Open Database License](https://opendatacommons.org/licenses/dbcl/1-0/), which means we are free to use its content for educational purposes. To view a complete break-down of the dataset, including data acquisition, visualization, and modification, please see the notebook in this repository. 
 
-Data splitting
+&nbsp;&nbsp;&nbsp;&nbsp;To summarize, when we extract only English songs from the dataset, we get a total of 191,814 songs, with a mean word count of approximately 250, and a standard deviation of 159. If we exclude outliers in the dataset, namely songs with extremely low word counts (like less than 100) and songs with extremely high word counts (like over 400), we don’t actually lose that many songs, with a new total of 148,828 songs, but a lower standard deviation of 75, and now the distribution looks more normal. We also decided to simply exclude songs that had symbols or other languages as a part of the vocabulary. To do this, we had a list of acceptable characters, and then constrained our dataset to have only songs that adhere to our character list. Therefore, our final set of data was 117,708 songs, with a mean of 215 and standard deviation of 74, which is still enough data points for our model. After all these constraints on the dataset, we get an average character length of roughly 1079, and a standard deviation of 371. This means that the model should have enough variance in the data to train from, so that it hopefully generalizes well, and it will train from songs with word counts that you would typically expect.
+
+&nbsp;&nbsp;&nbsp;&nbsp;We did not apply any data augmentation techniques, simply because we already had enough data as is, however we did have to use torchdata to load our datasets into useable training, validation, and testing sets. This means that our data was split into training, validation, and testing sets with 58,855, 39,237, and 19,619 data points respectively (split 50%, 30%, 20%). The process of splitting the dataset was not straightforward, as we ended up needing to create separate csv files for each set, and then load them into our notebook from each file. 
+
 
 ## Training
 
