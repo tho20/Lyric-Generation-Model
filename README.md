@@ -70,7 +70,7 @@ We each contributed to this final project, but please see the breakdown of tasks
 
 Vishay: Worked on data acquisition/visualization and summary statistics, model creation, overfitting models, training batch models/checkpointing, learning curve generation, picking the best model, song generation, and general notebook organization/writing. As for the README, I worked on Data, and Authors.
 
-Justin: Worked on model architecture and coding. Worked on training and overfitting small dataset. Iterated on different model variations to create a higher performing model. Also, bucketing the data, and tuning parameters.
+Justin: Worked on model architecture and coding. Worked on training and overfitting small dataset. Iterated on different model variations to create a higher performing model. Also, bucketing the data, and tuning parameters. For the README, I worked on Results.
 
 Thomas: Worked on data formatting/acquisition, training and choosing models, tuning hyperparameters. For the README, I was responsible for the Introduction, Training, and Ethical considerations sections.  
 
