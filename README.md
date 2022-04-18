@@ -17,8 +17,26 @@ Basically, our target is to generate lyrics which require a relatively long inpu
 
 
 ## Model
-Our model consists of embedding layers, LSTM layer and a fully connected layer. The embedding layer featurize a vector representation of each character given the number of vocabulary in the dataset. The featurized vectore is fed into the LSTM layer as input. Our model only uses one LSTM layer and we think one layer is sufficient for this problem. We have also used bi-directional and stacked LSTM. Both of these model overfits the data easily. We can see from the training loss and result. The loss decrease fast, however, the prediction is always the same or similar to the last training target. So we choosed the single LSTM model for better generalization. The last fully connected layer converts LSTM output (hidden units at the last time stamp) to desired shape (number of vocabulary).
 
+![LSTM-Model](https://user-images.githubusercontent.com/55116264/163865319-d3eedbc3-bfa8-4bd5-bf8c-edc991a30557.jpeg)
+
+
+
+Our model consists of embedding layers, LSTM layer and a fully connected layer. The embedding layer featurize a vector representation of each character given the number of vocabulary in the dataset. The featurized vectore is fed into the LSTM layer as input. Our model only uses one LSTM layer and we think one layer is sufficient for our lyrics generator. We have also used bi-directional and stacked LSTM. Both of these model overfits the data easily. So we choosed the single LSTM model for better generalization. The last fully connected layer converts LSTM output (hidden state at each time stamp) to desired shape (number of vocabulary).
+
+#### Number of parameters
+
+Let V be the number of vocabularies in the dataset, E be the number of embedding units ,H be the number of hidden units in LSTM, T be the number of Time stamps and B be the batch size.
+
+In the embedding layer, we need to train the weights in the dense layer. The input shape of that layer is (B, S, 1, V), one hot encoded character representation. The output shape of this layer is (B, S, 1, E). Shape of the trainable weight is (B, S, V, E). 
+
+![LSTM-Function](https://user-images.githubusercontent.com/55116264/163867543-032cebc3-77f4-4e24-b46e-189e302d604f.jpg)
+
+The forward pass for LSTM is shown above. We can see that for each of the gate and memory, there are two weights and two biases that our model need to train. The first pair of weight and bias is respective to input. Therefore, the shape of weight is (B, H, E), given the input shape is (B, 1, E) for each time stamp, and the shape of bias is (B, 1, H). The second pair of weight and bias is respective to hidden state, so the shape of weight is (B, H, H) and shape of bias is (B, 1, H).
+
+At each time stamp, our model needs to train the above paramters for each gate and memory cell (4 times).
+
+At last, we feed the output of each time stamp to the dense layer to produce output with shape (B, S, 1, V). So that the shape of weight in this layer is (B, S, H, V).
 
 ## Data
 
