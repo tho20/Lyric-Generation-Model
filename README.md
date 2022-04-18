@@ -22,21 +22,36 @@ Basically, our target is to generate lyrics which require a relatively long inpu
 
 
 
-Our model consists of embedding layers, LSTM layer and a fully connected layer. The embedding layer featurize a vector representation of each character given the number of vocabulary in the dataset. The featurized vectore is fed into the LSTM layer as input. Our model only uses one LSTM layer and we think one layer is sufficient for our lyrics generator. We have also used bi-directional and stacked LSTM. Both of these model overfits the data easily. So we choosed the single LSTM model for better generalization. The last fully connected layer converts LSTM output (hidden state at each time stamp) to desired shape (number of vocabulary).
+Our model consists of embedding layers, LSTM layer and a fully connected layer. The embedding layer featurize a vector representation of each character given the number of vocabulary in the dataset. The featurized vectore is fed into the LSTM layer as input. Our model only uses one LSTM layer and we think one layer is sufficient for our lyrics generator. We have also used bi-directional and stacked LSTM. Both of these model overfits the data easily. So we choosed the single LSTM model for better generalization. The fully connected layer converts LSTM output (hidden state at each time stamp) to desired shape (number of vocabulary).
 
 #### Number of parameters
 
 Let V be the number of vocabularies in the dataset, E be the number of embedding units ,H be the number of hidden units in LSTM, T be the number of Time stamps and B be the batch size.
 
-In the embedding layer, we need to train the weights in the dense layer. The input shape of that layer is (B, S, 1, V), one hot encoded character representation. The output shape of this layer is (B, S, 1, E). Shape of the trainable weight is (B, S, V, E). 
+In the embedding layer, we need to train the weights in the dense layer. The input shape of the dense layer is (B, S, 1, V), one hot encoded character representation. The output shape of this layer is (B, S, 1, E). Shape of the trainable weight is (B, S, V, E). 
 
 ![LSTM-Function](https://user-images.githubusercontent.com/55116264/163867543-032cebc3-77f4-4e24-b46e-189e302d604f.jpg)
 
-The forward pass for LSTM is shown above. We can see that for each of the gate and memory, there are two weights and two biases that our model need to train. The first pair of weight and bias is respective to input. Therefore, the shape of weight is (B, H, E), given the input shape is (B, 1, E) for each time stamp, and the shape of bias is (B, 1, H). The second pair of weight and bias is respective to hidden state, so the shape of weight is (B, H, H) and shape of bias is (B, 1, H).
+The forward pass for LSTM is shown above. We can see that for each of the gate and memory, there are two weights and two biases that our model need to train. The first pair of weight and bias respect to the current input sequence. Therefore, the shape of weight is (B, H, E), given the input shape is (B, 1, E) for each time stamp, and the shape of bias is (B, 1, H). The second pair of weight and bias respect to previous hidden state, so the shape of weight is (B, H, H) and shape of bias is (B, 1, H).
 
 At each time stamp, our model needs to train the above paramters for each gate and memory cell (4 times).
 
 At last, we feed the output of each time stamp to the dense layer to produce output with shape (B, S, 1, V). So that the shape of weight in this layer is (B, S, H, V).
+
+#### Examples
+
+The lyrics generator takes in a trained model and a pair of char-to-int and int-to-char mapping, maximum length of character generated and temperature (degree of divergence).
+
+This function call the forward method of the model at most maxmum length times or the output for forward call is <EOS> (end of string) and return a predicted string.
+
+#### Successful example
+
+![Success](https://user-images.githubusercontent.com/55116264/163878525-ecf6b6c8-eab3-49d7-a324-f1f80f51b0fe.jpg)
+
+#### Failure example 
+
+![Fail](https://user-images.githubusercontent.com/55116264/163879318-414709b3-6eed-41f8-9b90-62ab16d2081a.jpg)
+
 
 ## Data
 
