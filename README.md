@@ -64,9 +64,21 @@ This function call the forward method of the model at most maxmum length times o
 
 ## Training
 
-![image](https://user-images.githubusercontent.com/68927580/163728451-40702e80-8ecb-4c42-8809-e3a9ae7c7acf.png)
+Figure 1:
+  
+![lc3](https://user-images.githubusercontent.com/47124192/163884252-68cbde6b-14bb-442a-8947-ef9de7e55f85.png)
 
 We tried a couple of different embedding size and hidden size before choosing 128 and 256 respectively.  Moreover, we tried a variety of different learning rates and adjusted whenever we deemed necessary (i.e. if the model was converging slowly we would increase the learning rate and if we were getting too much instability we would decrease it). We ended up by settling on a learning rate of 0.003 for the main model. We also kept a log of hyperparameters tested so that we don’t repeat ourselves and waste time since the models took a  while to train.
+
+Figure 2:
+  
+![lc](https://user-images.githubusercontent.com/47124192/163883941-6a9a4b3d-480c-487e-8b5f-5fd1cbd27264.png)
+  
+Figure 3:
+  
+![lc2](https://user-images.githubusercontent.com/47124192/163883920-e7c83347-ac52-4324-8a33-f17ae65aa5eb.png)
+ 
+Figure 2 and figure 3 represent the last 1600 iterations of our model.
 
 ## Results
 The final loss is 1.284720 with training and validation accuracies 0.584776 and 0.584184 respectively.
@@ -86,7 +98,20 @@ In this example lyrics we can identify a few notable features:
 
 For our final model we will often see generated text that exhibit these features. These features are not present in an untrained model (that generates random strings). We can reasonably assume our model learned a large number of words and has some intuition of how to structure some lyrics. But it is unable to create lyrics that have substantial meaning.
 We think that using a bigger model with more training time would allow us to generate lyrics that make more sense as opposed to just grammatically correct strings of words. We're confident our dataset was large enough, so we think the main bottleneck was the size of our model and the computing resources at our disposal.
+  
+Here is an example of how our model performs:
+  
+<img width="601" alt="Screen Shot 2022-04-18 at 17 41 33" src="https://user-images.githubusercontent.com/47124192/163882446-4d63ab3b-2d03-4e5c-99a9-b9fb6bdddb8e.png">
+  
+ 
+We chose a size of 1078 characters since that is the mean of all lyrics in the dataset. We believe that our results are satisfactory given the amount of our training data (50 000 songs/lyrics). Notice that our model even learned how to rhyme (first few lines of 4th paragraph).
+  
+As for the test set, we had an accuracy of about 58% as wee can see from the following graph:
+  
+![test](https://user-images.githubusercontent.com/47124192/163883435-8dcb6410-875e-4ee4-87bd-c5c9d93fb0ea.png)
 
+Our accuracy was computed by comparing the output of the model against the actual song lyrics. As we can see our model is far from 100% accuracy, which is a good thing since it shows that our model is not memorizing the actual lyrics but actually creating new lyrics.
+  
 ## Ethical Considerations
 
 Our lyric generation model has several use cases. For starters, it could be used for
