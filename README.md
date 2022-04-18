@@ -65,3 +65,14 @@ since the model might not be 100% perfect, thus, our model might spit out ungram
 meaningless lyrics occasionally.
 
 ## Authors
+
+We each contributed to this final project, but please see the breakdown of tasks below for more information:
+
+Vishay: Worked on data acquisition/visualization and summary statistics, model creation, overfitting models, training batch models/checkpointing, learning curve generation, picking the best model, song generation, and general notebook organization/writing. As for the README, I worked on Data, and Authors.
+
+Justin: Worked on model architecture and coding. Worked on training and overfitting small dataset. Iterated on different model variations to create a higher performing model. Also, bucketing the data, and tuning parameters.
+
+Thomas: Worked on data formatting/acquisition, training and choosing models, tuning hyperparameters. For the README, I was responsible for the Introduction, Training, and Ethical considerations sections.  
+
+Litao: Worked on cleaning dataset, splitting dataset into train, test and validation, overfitting small data, batch model initialization, training model and helper functions for calculating accuracies and plotting graphs. For the README, I am responsible for the model section.
+
