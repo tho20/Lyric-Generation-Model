@@ -103,8 +103,8 @@ Here is an example of how our model performs:
   
 <img width="601" alt="Screen Shot 2022-04-18 at 17 41 33" src="https://user-images.githubusercontent.com/47124192/163882446-4d63ab3b-2d03-4e5c-99a9-b9fb6bdddb8e.png">
   
- 
-We chose a size of 1078 characters since that is the mean of all lyrics in the dataset. We believe that our results are satisfactory given the amount of our training data (50 000 songs/lyrics). Notice that our model even learned how to rhyme (first few lines of 4th paragraph).
+We chose a size of 1078 characters since that is the mean of all lyrics in the dataset. 
+We believe that our results are reasonable given the amount of our training data (50 000 songs/lyrics) and amount of time spent training the model (limited computational resources). Our model managed to generate meaningful lyrics even though it makes a few gramatical mistakes and some lines might not make a lot of sense. In addition, our model was capable of detecting cool patterns such as how to rhyme (first few lines of 4th paragraph) and when to break off a line and create a verse.
   
 As for the test set, we had an accuracy of about 58% as wee can see from the following graph:
   
