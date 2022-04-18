@@ -17,6 +17,8 @@ Basically, our target is to generate lyrics which require a relatively long inpu
 
 
 ## Model
+Our model consists of embedding layers, LSTM layer and a fully connected layer. The embedding layer featurize a vector representation of each character given the number of vocabulary in the dataset. The featurized vectore is fed into the LSTM layer as input. Our model only uses one LSTM layer and we think one layer is sufficient for this problem. We have also used bi-directional and stacked LSTM. Both of these model overfits the data easily. We can see from the training loss and result. The loss decrease fast, however, the prediction is always the same or similar to the last training target. So we choosed the single LSTM model for better generalization. The last fully connected layer converts LSTM output (hidden units at the last time stamp) to desired shape (number of vocabulary).
+
 
 ## Data
 
